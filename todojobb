@@ -27,14 +27,49 @@ class App extends Component {
     })
   }
 
+  checkftn = () => {
+
+  }
+
   render(){
     return( 
-                  // put html doc here, calling the individual components
 
-      <div>
+    	<link href="./css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<!-- <link href="./css/todomockupstyle.css" rel="stylesheet" type="text/css" /> -->
+		<head>
+			<title>todo lister</title>
+		</head>
+		<body>
+// <script type="text/javascript" src="todomockup.js">	
+// </script>
+		<div id="headline">welcome to todo lister</div>
+		<div id="instruction">write task below then press AddToList</div>
+		<div>
         <input type = "text" onChange={this.inputChange} value = {this.state.text}/>
         <button type= "submit" onClick = {this.btnftn}>AddToList</button>
-        {this.state.descriptions.map((description,i) => <li key={"task"+i}><div className="item">{description}</div></li>)}
+        <div>
+        	<h2>tasks</h2>
+       		<ul id="incompletesList">
+
+
+
+
+
+
+
+                  // put html doc here, calling the individual components
+
+      
+	        {this.state.descriptions.map((description,i) => {
+    	    	<li key={"task"+i}>
+        		<div className="item col-sm-11">{description}</div>
+	        	<div className="status col-sm-1">
+	        	<button type = "submit" onClick = {this.checkftn}>&#10003;</button>
+				</div>
+				</li>)
+	    		}
+	    	}
+	    	</ul>
         </div>
     )
   }
