@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Welcome from "./Welcome";
+import Task from "./Task";
 
 
-export default
-class App extends Component {
 
-  constructor(props){
+export default class App extends Component {
+
+  constructor(props) {
     super(props);
     this.state = {
       text: "",
@@ -18,38 +20,27 @@ class App extends Component {
     })
   }
 
-  btnftn = () => { 
+  btnftn = () => {
     let arr = this.state.descriptions;
     arr.push(this.state.text);
     this.setState({
       descriptions: arr,
-      text:""
+      text: ""
     })
   }
 
-  checkftn = () => {
 
-  }
 
-  render(){
-    return( 
+  render() {
 
-    	<link href="./css/bootstrap.css" rel="stylesheet" type="text/css" />
-		<!-- <link href="./css/todomockupstyle.css" rel="stylesheet" type="text/css" /> -->
-		<head>
-			<title>todo lister</title>
-		</head>
-		<body>
-// <script type="text/javascript" src="todomockup.js">	
-// </script>
-		<div id="headline">welcome to todo lister</div>
-		<div id="instruction">write task below then press AddToList</div>
-		<div>
-        <input type = "text" onChange={this.inputChange} value = {this.state.text}/>
-        <button type= "submit" onClick = {this.btnftn}>AddToList</button>
+    return (
+<div>
+        <Welcome />
+        <input type="text" onChange={this.inputChange} value={this.state.text} />
+        <button type="submit" onClick={this.btnftn}>AddToList</button>
         <div>
-        	<h2>tasks</h2>
-       		<ul id="incompletesList">
+          <h2>tasks</h2>
+          <ul id="incompletesList">
 
 
 
@@ -57,115 +48,63 @@ class App extends Component {
 
 
 
-                  // put html doc here, calling the individual components
+            // put html doc here, calling the individual components
 
-      
-	        {this.state.descriptions.map((description,i) => {
-    	    	<li key={"task"+i}>
-        		<div className="item col-sm-11">{description}</div>
-	        	<div className="status col-sm-1">
-	        	<button type = "submit" onClick = {this.checkftn}>&#10003;</button>
-				</div>
-				</li>)
-	    		}
-	    	}
-	    	</ul>
+            <Task/>
+            
+       
+
+
+          </ul>
         </div>
+      </div>
     )
+
+
   }
 }
 
+// import React,{Component} from 'react';
+// // import Task from './Task.js';
+
+// export default
+// class App extends Component{
+
+
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//         	text: "",
+//             names: ["eg1", "eg2", "eg3"]
+//         }
+//     }
+
+
+//        inputChange = (e) => {
+//         	this.setState({
+//         		text: e.target.value
+//         	})
+//         }
+
+//         btnfn = () => {
+//        	let arr = this.state.names;
+//         	arr.push(this.state.text);
+//         	this.setState({
+//         		names: arr,
+//         		text: ""
+//         	})
+//         }
 
 
 
+// 	render(){
+// 		return(
+// 				<div>
+// 					<input type="text" onChange={this.inputChange} value={this.state.text}/>
+// 					<button type="submit" onClick = {this.btnfn}>Add</button>
 
-
-
-
-<!DOCTYPE html>
-<html>
-<link href="./css/bootstrap.css" rel="stylesheet" type="text/css" />
-<!-- <link href="./css/todomockupstyle.css" rel="stylesheet" type="text/css" /> -->
-<head>
-	<title>todo lister</title>
-</head>
-<body>
-<script type="text/javascript" src="todomockup.js">	
-</script>
-<script type="text/javascript" src="C:\Users\Admin\Desktop\React\my-app\src\App.js">
-</script>
-	<div id="headline">welcome to todo lister</div>
-	<button type = "submit" onClick="App.render()" >
-				start
-			</button>
-	<form onsubmit="addToIncompletes(event)">
-		<div id = "todoinput">
-			<input type="text" id="todo"
-			placeholder="New to-do item..."
-			alt="new todo input"
-			required="required"/>
-			<button type = "submit" >
-				Add to list
-			</button>
-		</div> 
-	</form>
-	<div id="incompletes">
-		<h2>tasks</h2>
-		<ul id="incompletesList">
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">this is to do item</div>
-					<div class="status col-sm-1"><button type = "submit">&#10003;
-					</button>
-				</div>
-			</div>
-			</li>
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">is third to do item thats incomplete</div>
-					<div class="status col-sm-1"><button type = "submit">&#10003;
-					</button>
-				</div>
-			</div>
-			</li>
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">this also is to do</div>
-					<div class="status col-sm-1"><button type = "submit">&#10003;
-					</button>
-				</div>
-			</div>
-			</li>
-		</ul>
-	</div>
-	<!-- <div id="completes">
-		<h3>completed tasks</h3>
-		<ul>
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">this is old to do item</div>
-					<div class="status col-sm-1"><button type = "submit"><img src="./css/cross.png" alt="cross" width = 15 height = 15>
-					</button>
-				</div>
-			</div>
-			</li>
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">this is also old item</div>
-					<div class="status col-sm-1"><button type = "submit"><img src="./css/cross.png" alt="cross" width = 15 height = 15>
-					</button>
-				</div>
-			</div>
-			</li>
-			<li>
-				<div class="row">
-					<div class="description col-sm-11">this is completed to do as well</div>
-					<div class="status col-sm-1"><button type = "submit"><img src="./css/cross.png" alt="cross" width = 15 height = 15>
-					</button>
-				</div>
-			</div>
-			</li>
-		</ul> -->
-	</div>
-</body>
-</html>
+//                 {this.state.names.map((name,i) => <li key={"task"+i}><div className="item"><Task text={name}/></div></li>)}
+// 				</div>
+// 			)
+// 	}
+// }
